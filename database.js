@@ -11,4 +11,3 @@ db.exec(`
 `);
 
 module.exports = db;
-// O código acima cria um banco de dados SQLite chamado "tasks.db" e uma tabela chamada "tasks" com três colunas: id, title e description. A coluna id é a chave primária e é incrementada automaticamente. As colunas title e description são obrigatórias (NOT NULL).
