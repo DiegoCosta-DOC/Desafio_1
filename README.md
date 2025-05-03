@@ -1,126 +1,53 @@
-# 📝 API Tasks - Gerenciamento de Tarefas
+## API de Gerenciamento de Tarefas (Node.js, Express e SQLite)
 
-## 📌 Sobre o projeto
-Este projeto implementa uma **API RESTful** para gerenciamento de tarefas, permitindo criar, listar, atualizar e excluir tarefas.  
-Desenvolvido com **Node.js** e **Express.js**, a API é simples e eficiente para manipulação de tarefas no formato JSON.
+API RESTful simples para gerenciar tarefas (CRUD) utilizando Node.js, Express e SQLite.
 
-✅ Criação de tarefas  
-✅ Listagem de todas as tarefas  
-✅ Consulta de tarefa por ID  
-✅ Atualização de tarefas existentes  
-✅ Remoção de tarefas  
+### Tecnologias
 
----
+* Node.js
+* Express
+* better-sqlite3
 
-## 📂 Estrutura do projeto
+### Como Executar
 
-📦 api-tasks ┣ 📜 server.js # Código principal do servidor ┣ 📜 README.md # Documentação do projeto ┗ 📂 node_modules # Dependências instaladas pelo npm
+1.  **Clone:** `git clone [https://github.com/DiegoCosta-DOC/Desafio_1.git]`
+2.  **Instale:** `npm install` ou `yarn install`
+3.  **Execute:** `node index.js` ou `npm start` ou `yarn start`
 
+A API estará rodando em `http://localhost:3000`.
 
----
+### Endpoints
 
-## 🛠️ Tecnologias usadas
-- **Node.js** - Runtime JavaScript no servidor
-- **Express.js** - Framework para criação da API
-- **Middleware** - Tratamento de requisições HTTP
+* `POST /tasks`: Adiciona tarefa (body: `{ title, description }`)
+* `GET /tasks`: Lista tarefas
+* `GET /tasks/:id`: Exibe tarefa
+* `PUT /tasks/:id`: Atualiza tarefa (body: `{ title?, description? }`)
+* `DELETE /tasks/:id`: Deleta tarefa
 
----
+### Demonstração (curl)
 
-## ⚙️ Instalação e execução
+```bash
+curl -X POST -H "Content-Type: application/json" -d '{"title": "Tarefa Exemplo", "description": "Descrição da tarefa"}' http://localhost:3000/tasks
+curl http://localhost:3000/tasks
+curl http://localhost:3000/tasks/1
+curl -X PUT -H "Content-Type: application/json" -d '{"title": "Tarefa Atualizada"}' http://localhost:3000/tasks/1
+curl -X DELETE http://localhost:3000/tasks/1
 
-### 🔹 **1. Clone o repositório**
-```sh
-git clone https://github.com/seu-usuario/api-tasks.git
-🔹 2. Acesse a pasta do projeto
-sh
-cd api-tasks
-🔹 3. Instale as dependências
-sh
-npm install
-🔹 4. Inicie o servidor
-sh
-node server.js
-🔹 O servidor rodará em http://localhost:3000.
+### Testando a API com Postman
 
-🔗 Endpoints disponíveis
-1️⃣ Criar uma tarefa
-Método: POST
+Use o Postman para interagir com os endpoints:
 
-URL: /tasks
+1.  **POST /tasks**: Body (JSON) `{ "title": "...", "description": "..." }`
+    * Resposta 201 Created + tarefa criada.
+2.  **GET /tasks**: Lista todas as tarefas (Resposta 200 OK + array de tarefas).
+3.  **GET /tasks/:id**: Exibe tarefa (Resposta 200 OK + tarefa).
+4.  **PUT /tasks/:id**: Body (JSON) `{ "title"?: "...", "description"?: "..." }`
+    * Resposta 200 OK + tarefa atualizada.
+5.  **DELETE /tasks/:id**: Resposta 204 No Content (sucesso).
 
-Body (JSON):
+Considerações
+Este projeto demonstra minha capacidade de construir uma API RESTful funcional utilizando Node.js e Express, incluindo a configuração de rotas, tratamento de requisições e respostas HTTP, e interação com um banco de dados SQLite para persistência de dados. A escolha do SQLite simplifica a configuração e implantação para um projeto de demonstração.
 
-json
-{
-  "title": "Estudar Node.js",
-  "description": "Aprender conceitos de API com Express.js"
-}
-Resposta esperada:
+A estrutura do código, com a separação da lógica de banco de dados (database.js) e da lógica da API (index.js), visa a organização e a manutenibilidade. O tratamento de erros básico e a validação de entrada demonstram uma preocupação com a robustez da API.
 
-json
-{
-  "id": 1,
-  "title": "Estudar Node.js",
-  "description": "Aprender conceitos de API com Express.js"
-}
-2️⃣ Listar todas as tarefas
-Método: GET
-
-URL: /tasks
-
-Resposta esperada:
-
-json
-[
-  {
-    "id": 1,
-    "title": "Estudar Node.js",
-    "description": "Aprender conceitos de API com Express.js"
-  }
-]
-3️⃣ Consultar tarefa por ID
-Método: GET
-
-URL: /tasks/{id}
-
-Exemplo: /tasks/1
-
-Resposta esperada:
-
-json
-{
-  "id": 1,
-  "title": "Estudar Node.js",
-  "description": "Aprender conceitos de API com Express.js"
-}
-4️⃣ Atualizar uma tarefa
-Método: PUT
-
-URL: /tasks/{id}
-
-Body (JSON):
-
-json
-{
-  "title": "Estudar Node.js e Express",
-  "description": "Aprofundar no desenvolvimento de APIs RESTful"
-}
-Resposta esperada:
-
-json
-{
-  "id": 1,
-  "title": "Estudar Node.js e Express",
-  "description": "Aprofundar no desenvolvimento de APIs RESTful"
-}
-5️⃣ Deletar uma tarefa
-Método: DELETE
-
-URL: /tasks/{id}
-
-Exemplo: /tasks/1
-
-Resposta esperada: 204 No Content
-
-📌 Considerações finais
-✅ Código estruturado e otimizado para manipulação de tarefas ✅ Middleware implementado para log de requisições ✅ API simples, leve e eficiente 🚀
+Este projeto serve como uma base sólida para futuras expansões e implementações mais complexas. Estou ansioso para aplicar e aprimorar minhas habilidades em projetos maiores e mais desafiadores.
