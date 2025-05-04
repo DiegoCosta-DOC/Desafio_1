@@ -24,15 +24,6 @@ A API estará rodando em `http://localhost:3000`.
 * `PUT /tasks/:id`: Atualiza tarefa (body: `{ title?, description? }`)
 * `DELETE /tasks/:id`: Deleta tarefa
 
-### Demonstração (curl)
-
-```bash
-curl -X POST -H "Content-Type: application/json" -d '{"title": "Tarefa Exemplo", "description": "Descrição da tarefa"}' http://localhost:3000/tasks
-curl http://localhost:3000/tasks
-curl http://localhost:3000/tasks/1
-curl -X PUT -H "Content-Type: application/json" -d '{"title": "Tarefa Atualizada"}' http://localhost:3000/tasks/1
-curl -X DELETE http://localhost:3000/tasks/1
-
 ### Testando a API com Postman
 
 Use o Postman para interagir com os endpoints:
@@ -45,9 +36,18 @@ Use o Postman para interagir com os endpoints:
     * Resposta 200 OK + tarefa atualizada.
 5.  **DELETE /tasks/:id**: Resposta 204 No Content (sucesso).
 
+### Demonstração (curl)
+
+```bash
+curl -X POST -H "Content-Type: application/json" -d '{"title": "Tarefa Exemplo", "description": "Descrição da tarefa"}' http://localhost:3000/tasks
+curl http://localhost:3000/tasks
+curl http://localhost:3000/tasks/1
+curl -X PUT -H "Content-Type: application/json" -d '{"title": "Tarefa Atualizada"}' http://localhost:3000/tasks/1
+curl -X DELETE http://localhost:3000/tasks/1
+
+
 Considerações
-Este projeto demonstra minha capacidade de construir uma API RESTful funcional utilizando Node.js e Express, incluindo a configuração de rotas, tratamento de requisições e respostas HTTP, e interação com um banco de dados SQLite para persistência de dados. A escolha do SQLite simplifica a configuração e implantação para um projeto de demonstração.
 
 A estrutura do código, com a separação da lógica de banco de dados (database.js) e da lógica da API (index.js), visa a organização e a manutenibilidade. O tratamento de erros básico e a validação de entrada demonstram uma preocupação com a robustez da API.
 
-Este projeto serve como uma base sólida para futuras expansões e implementações mais complexas. Estou ansioso para aplicar e aprimorar minhas habilidades em projetos maiores e mais desafiadores.
+Este projeto serve como uma base sólida para futuras expansões e implementações mais complexas.
